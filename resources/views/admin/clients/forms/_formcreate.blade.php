@@ -73,12 +73,12 @@
     </div>
     <div class="row">
         <div class="col-xs-12 form-group">
-            {!! Form::label('other_family', 'other_family', ['class' => 'control-label']) !!}
-            {!! Form::select('other_family', $options,old('other_family'), ['class' => 'form-control', 'placeholder' => '']) !!}
+            {!! Form::label('additional_family', 'additional_family', ['class' => 'control-label']) !!}
+            {!! Form::select('additional_family', $options,old('additional_family'), ['class' => 'form-control', 'placeholder' => '']) !!}
             <p class="help-block"></p>
-            @if($errors->has('other_family'))
+            @if($errors->has('additional_family'))
                 <p class="help-block">
-                    {{ $errors->first('other_family') }}
+                    {{ $errors->first('additional_family') }}
                 </p>
             @endif
         </div>
@@ -86,12 +86,12 @@
 
     <div class="row">
         <div class="col-xs-12 form-group">
-            {!! Form::label('other_family_names', 'other_family_names', ['class' => 'control-label']) !!}
-            {!! Form::text('other_family_names', old('other_family_names'), ['class' => 'form-control', 'placeholder' => '']) !!}
+            {!! Form::label('additional_names', 'additional_names', ['class' => 'control-label']) !!}
+            {!! Form::text('additional_names', old('additional_names'), ['class' => 'form-control', 'placeholder' => '']) !!}
             <p class="help-block"></p>
-            @if($errors->has('other_family_names'))
+            @if($errors->has('additional_names'))
                 <p class="help-block">
-                    {{ $errors->first('other_family_names') }}
+                    {{ $errors->first('additional_names') }}
                 </p>
             @endif
         </div>
@@ -138,12 +138,12 @@
 
     <div class="row">
         <div class="col-xs-12 form-group">
-            {!! Form::label('last_place_residence', 'last_place_residence', ['class' => 'control-label']) !!}
-            {!! Form::select('last_place_residence',$residences,old('last_place_residence'), ['class' => 'form-control', 'placeholder' => '']) !!}
+            {!! Form::label('last_night_residence', 'last_night_residence', ['class' => 'control-label']) !!}
+            {!! Form::select('last_night_residence',$residences,old('last_night_residence'), ['class' => 'form-control', 'placeholder' => '']) !!}
             <p class="help-block"></p>
-            @if($errors->has('last_place_residence'))
+            @if($errors->has('last_night_residence'))
                 <p class="help-block">
-                    {{ $errors->first('last_place_residence') }}
+                    {{ $errors->first('last_night_residence') }}
                 </p>
             @endif
         </div>

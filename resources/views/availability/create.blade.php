@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="well">
-            {!! Form::open(['method' => 'POST', 'route' => ['admin.appointments.store']]) !!}
+            {!! Form::open(['method' => 'POST', 'url' => 'availability']) !!}
             <div class="form-group">
                 {!! Form::hidden('employee_id',$employee->id, ['class' => 'form-control', 'placeholder' => 'Select Case manager', 'hidden' =>'true']) !!}
                 <p class="help-block"></p>
