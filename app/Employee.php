@@ -32,6 +32,11 @@ class Employee extends Model
 	{
 		return $this->hasMany('App\WorkingHour', 'employee_id');
 	}
+    //retu
+    public function working_days()
+    {
+        return $this->hasMany('App\WorkingHour', 'employee_id');
+    }
 	
 	public function is_working($date) {
 		return $this->working_hours->where('date', '=', $date)->first();

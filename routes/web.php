@@ -1,6 +1,11 @@
 <?php
-Route::get('/', function () { return redirect('/admin/home'); });
+Route::get('/','HomeController@index');
+Route::get('employees-list','HomeController@getEmployeeList');
+Route::resource('availability','AvailabilityController');
 
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::resource('appointments', 'Admin\AppointmentsController');
+});
 // Authentication Routes...
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
 $this->post('login', 'Auth\LoginController@login')->name('auth.login');
@@ -29,7 +34,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('employees_mass_destroy', ['uses' => 'Admin\EmployeesController@massDestroy', 'as' => 'employees.mass_destroy']);
     Route::resource('working_hours', 'Admin\WorkingHoursController');
     Route::post('working_hours_mass_destroy', ['uses' => 'Admin\WorkingHoursController@massDestroy', 'as' => 'working_hours.mass_destroy']);
-    Route::resource('appointments', 'Admin\AppointmentsController');
+    //Route::resource('appointments', 'Admin\AppointmentsController');
     Route::post('appointments_mass_destroy', ['uses' => 'Admin\AppointmentsController@massDestroy', 'as' => 'appointments.mass_destroy']);
 	Route::resource('services', 'Admin\ServicesController');
 	Route::post('services_mass_destroy', ['uses' => 'Admin\ServicesController@massDestroy', 'as' => 'services.mass_destroy']);

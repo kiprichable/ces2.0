@@ -19,5 +19,22 @@ class Client extends Model
 
     protected $fillable = ['first_name', 'last_name', 'phone', 'email'];
     
-    
+
+    public function lastPlaceOfResidence()
+    {
+        return [
+            'outside/park/Camp' => 'outside/park/Camp',
+            'Emergency or DV shelter' => 'Emergency or DV shelter',
+            'Own Apartment/House/trailer' => 'Own Apartment/House/trailer',
+            'Shed/Garage or Building' => 'Shed/Garage or Building',
+            'Vehicle' => 'Vehicle',
+            'Motel paid by Agency' => 'Motel paid by Agency',
+            'Motel paid by self/family/friend' => 'Motel paid by self/family/friend',
+            'Family/Friend house' => 'Family/Friend house',
+            'Hospital or Treatment facility' => 'Hospital or Treatment facility',
+            'Jail,Prison/Detention' => 'Jail,Prison/Detention',
+            'other' => 'other',
+
+        ];
+    }
 }

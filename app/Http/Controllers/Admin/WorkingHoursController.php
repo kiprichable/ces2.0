@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Employee;
 use App\WorkingHour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreWorkingHoursRequest;
 use App\Http\Requests\Admin\UpdateWorkingHoursRequest;
+use Illuminate\Support\Facades\Auth;
 
 class WorkingHoursController extends Controller
 {
@@ -22,9 +24,19 @@ class WorkingHoursController extends Controller
             return abort(401);
         }
 
-        $working_hours = WorkingHour::all();
 
-        return view('admin.working_hours.index', compact('working_hours'));
+        if(Auth::user()->role_id == '1')
+        {
+            $employees = Employee::all();
+            $working_hours = WorkingHour::all();
+        }
+        else
+        {
+            $employees = Employee::where('email',Auth::user()->email)->get();
+            $working_hours = Employee::where('email',Auth::user()->email)->first()->working_hours();
+        }
+
+        return view('admin.working_hours.index', compact('working_hours','employees'));
     }
 
     /**
