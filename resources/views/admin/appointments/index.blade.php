@@ -107,6 +107,29 @@
             $('#calendar').fullCalendar({
                 // put your options and callbacks here
                 defaultView: 'agendaWeek',
+                timeFormat: 'h(:mm)',
+                minTime: '09:00:00',
+                maxTime: '17:00:00',
+                height: 500,
+                header:
+                    {
+                        left: 'prev,next,today',
+                        center: 'title',
+                        right: 'month,agendaWeek,agendaDay'
+                    },
+                businessHours: {
+                    // days of week. an array of zero-based day of week integers (0=Sunday)
+                    dow: [2,4], // Monday - Thursday
+
+                    start: '09:00', // a start time (9am in this example)
+                    end: '17:00', // an end time (6pm in this example)
+
+                },
+                hiddenDays: [ 1, 3, 5 ],
+
+                weekends: false,
+                editable: true,
+                selectable: true,
                 events : [
                         @foreach($appointments as $appointment)
                     {

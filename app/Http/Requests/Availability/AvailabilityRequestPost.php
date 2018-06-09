@@ -13,7 +13,7 @@ class AvailabilityRequestPost extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class AvailabilityRequestPost extends FormRequest
     public function rules()
     {
         return [
-
+                'state' => 'required',
+                'city' => 'required',
+                'phone' => 'required',
         ];
     }
 }

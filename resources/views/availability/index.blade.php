@@ -27,40 +27,33 @@
             <thead>
             <tr>
                 <th>Date</th>
-                <th>Time</th>
+                <th>Start</th>
+                <th>End</th>
                 <th>Book</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-            @foreach($availability as $key => $hours)
+            @foreach($availability as $hours)
                 <tr>
-                    <td class="success"><h4>{{$key}}</h4></td>
-                    <td class="lead success">{{date('l',strtotime($key))}}</td>
-                    <td class="success"></td>
-                @foreach($hours as $hour)
-                    <tr>
-                        <td class=""></td>
-                        <td class="lead">{{$hour}}</td>
-                        <td class="agenda-events">
-                            <div class="agenda-event">
-                                {{Form::open(['url' => 'availability/'.$employee->id ,'method' => 'PATCH'])}}
-                                <input type="text" name="date" value="{{$key}}" hidden>
-                                <input type="text" name="time" value="{{$hour}}" hidden>
-                                <button class="btn-block btn-info col-lg-6">Book</button>
-                                {{Form::close()}}
-                            </div>
-                        </td>
-                    </tr>
-                    @endforeach
-                    </tr>
-                    @endforeach
-                    </tr>
+                    <td>{{substr($hours->start_time,0,10)}}</td>
+                    <td>{{substr($hours->start_time,11,8)}}</td>
+                    <td>{{substr($hours->finish_time,11,8)}}</td>
+                    <td><a href="{{$hours->id.'/edit'}}" class="btn btn-primary">
+                            <span>Book</span>
+                        </a></td>
+                </tr>
+            @endforeach
+
             </tbody>
-        </table>
         </table>
     </div>
         @endif
     </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        } );
+    </script>
 @stop

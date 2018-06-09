@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>SL ENTRY</title>
-
+    <title>
+       CES
+    </title>
     <link href="{{url('/css/app.css')}}" rel="stylesheet">
     <link href="{{url('/fonts/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
@@ -37,7 +37,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="background: #010306; color: #f8f9f0">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -45,7 +45,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{url('/')}}">CES 2.0</a>
+        <a class="navbar-brand" href="{{url('/')}}">Co-ordinated Entry System</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -271,22 +271,22 @@
 
 </nav>
 
-<div id="wrapper">
-    <div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Dashboard</h1>
-            </div>
-            <!-- /.col-lg-12 -->
+<div id="wrapper" style="background-color: #5583b4">
+    @if (Session::has('flash_message'))
+        <div class="note note-info">
+            <p>{{ Session::get('flash_message') }}</p>
         </div>
-        <!-- /.row -->
-        @if(Auth::guest())
-            @include('partials.user-dashboard')
-        @endif
-        @if(Auth::user())
-            @include('partials.admin-dashboard')
-        @endif
-
+    @endif
+    @if ($errors->count() > 0)
+        <div class="note note-danger">
+            <ul class="list-unstyled">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <div id="page-wrapper">
         @yield('content')
     </div>
 

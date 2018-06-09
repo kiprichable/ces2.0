@@ -46,5 +46,9 @@ class Employee extends Model
 	{
 		return $this->services()->where('service_id', $service)->first();
 	}
-	
+
+    public function availability()
+    {
+        return $this->hasMany('App\Availability', 'employee_id');
+    }
 }
