@@ -95,13 +95,12 @@
                                     </div>
                                 @endif
                                 @foreach($contents as $content)
-                                <div class="col-lg-6 margin-bottom-30">
+                                <div class="col-lg-4 margin-bottom-30">
                                     <div class="portlet">
                                         <div class="portlet-title">
                                             <div class="caption caption-green">
                                                 <i class="fa fa-info-circle"></i>
                                                 <span class="caption-subject text-uppercase">{{$content->title}}</span>
-                                                <span class="caption-helper">Read more..</span>
                                             </div>
                                         </div>
                                         <div class="portlet-body">
@@ -127,25 +126,6 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-calendar-check-o fa-fw"></i> Events
-                    <div class="pull-right">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                Actions
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu pull-right" role="menu">
-                                <li><a href="#">Action</a>
-                                </li>
-                                <li><a href="#">Another action</a>
-                                </li>
-                                <li><a href="#">Something else here</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -174,18 +154,29 @@
             <div class="panel panel-default" style="margin-top: 2%">
                 <div class="panel-heading">
                     <i class="fa fa-bell fa-fw"></i> Stats/Data
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu slidedown">
+                            <li>
+                                <a href="{{url('admin/statistics')}}">
+                                    <i class="fa fa-edit fa-fw"></i> Edit Stats/Data
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div class="list-group">
                         @foreach($contents as $content)
-
                             <div id="menu">
                                 <a href="{{url('data/'.$content->id.'/edit')}}" class="pull-right"><span class="fa fa-edit "></span></a>
                                 <div class="panel list-group">
                                     <a href="#" class="list-group-item" data-toggle="collapse" data-target="#{{$content->id}}" data-parent="#menu">{{$content->title}}
                                         <span class="fa fa-folder-open pull-right">
-                                        <a href="{{url('data/'.$content->id.'/edit')}}" class="pull-right"><span class="fa fa-edit "></span></a>
+                                            <a href="{{url('data/'.$content->id.'/edit')}}"></a>
                                         </span>
                                     </a>
                                     <div id="{{$content->id}}" class="sublinks collapse">

@@ -7,6 +7,7 @@ use App\Employee;
 use App\Home;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Auth;
 
@@ -63,7 +64,13 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $home = new Home();
+        $home->title = $request->input('title');
+        $home->content = $request->input('content');
+        $home->updated_by = Auth::user()->email;
+        $home->save();
+
+        Session::flash('Content created successfully');
     }
 
     /**
@@ -74,7 +81,8 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('landing.show')
+                ->withHome(Home::find($id));
     }
 
     /**
@@ -102,7 +110,7 @@ class HomeController extends Controller
 
         $home->title = $request->input('title');
         $home->content = $request->input('content');
-        $home->updated_by = Auth::user();
+        $home->updated_by = Auth::user()->email;
 
         $home->save();
 

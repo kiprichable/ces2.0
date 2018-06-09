@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
+    @include('partials.dashboard')
     <h3 class="page-title">@lang('quickadmin.appointments.title')</h3>
 
     <div class="panel panel-default">
@@ -27,6 +28,39 @@
                         <tr>
                             <th>@lang('quickadmin.clients.fields.email')</th>
                             <td>{{ isset($appointment->client) ? $appointment->client->email : '' }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>@lang('quickadmin.clients.fields.age')</th>
+                            <td>{{$appointment->client->age }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.clients.fields.city')</th>
+                            <td>{{ $appointment->client->city }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.clients.fields.state')</th>
+                            <td>{{ $appointment->client->state }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.clients.fields.family')</th>
+                            <td>{{ $appointment->client->additional_family }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.clients.fields.names')</th>
+                            <td>{{ $appointment->client->additional_names }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.clients.fields.veteran')</th>
+                            <td>{{ $appointment->client->veteran }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.clients.fields.dd214')</th>
+                            <td>{{ $appointment->client->dd214 }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.clients.fields.residence')</th>
+                            <td>{{ $appointment->client->last_night_residence }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.appointments.fields.employee')</th>

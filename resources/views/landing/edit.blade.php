@@ -39,6 +39,7 @@
             </div>
         </div>
     </div>
+    </div>
 
     {!! Form::submit(trans('quickadmin.qa_update'), ['class' => 'col-lg-12 btn btn-danger']) !!}
     {!! Form::close() !!}

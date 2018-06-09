@@ -1,9 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-    <h3 class="page-title">@lang('quickadmin.clients.title')</h3>
+    <div id="page-wrapper" style="margin-top: 5%">
+    <div class="row">
+        <div class="col-lg-12" style="background-color: #4db3a2">
+            <h2  class="lead page-header">@lang('quickadmin.clients.title')</h2>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
 
-    <div class="panel panel-default">
+    <div class="row" style="margin-top: 2%">
         <div class="panel-heading">
             @lang('quickadmin.qa_view')
         </div>
@@ -27,6 +33,38 @@
                         <tr>
                             <th>@lang('quickadmin.clients.fields.email')</th>
                             <td>{{ $client->email }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.clients.fields.age')</th>
+                            <td>{{ $client->age }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.clients.fields.city')</th>
+                            <td>{{ $client->city }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.clients.fields.state')</th>
+                            <td>{{ $client->state }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.clients.fields.family')</th>
+                            <td>{{ $client->additional_family }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.clients.fields.names')</th>
+                            <td>{{ $client->additional_names }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.clients.fields.veteran')</th>
+                            <td>{{ $client->veteran }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.clients.fields.dd214')</th>
+                            <td>{{ $client->dd214 }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.clients.fields.residence')</th>
+                            <td>{{ $client->last_night_residence }}</td>
                         </tr>
                     </table>
                 </div>
@@ -100,7 +138,8 @@
 
             <p>&nbsp;</p>
 
-            <a href="{{ route('admin.clients.index') }}" class="btn btn-default">@lang('quickadmin.qa_back_to_list')</a>
+            <a href="{{ route('admin.clients.index') }}" class="btn btn-block btn-default">@lang('quickadmin.qa_back_to_list')</a>
         </div>
+    </div>
     </div>
 @stop

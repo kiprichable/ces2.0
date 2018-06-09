@@ -1,10 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
+    @include('partials.dashboard')
     <h3 class="page-title">@lang('quickadmin.appointments.title')</h3>
     @can('appointment_create')
         <p>
-            <a href="{{ route('admin.appointments.create') }}"
+            <a href="{{ url('/home') }}"
                class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
 
         </p>
@@ -128,8 +129,9 @@
                 hiddenDays: [ 1, 3, 5 ],
 
                 weekends: false,
-                editable: true,
-                selectable: true,
+                editable: false,
+                selectable: false,
+
                 events : [
                         @foreach($appointments as $appointment)
                     {

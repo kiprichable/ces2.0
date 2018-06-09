@@ -14,6 +14,7 @@
 <script src="{{ url('quickadmin/js') }}/select2.full.min.js"></script>
 <script src="{{ url('quickadmin/js') }}/main.js"></script>
 
+
 <script>
     window._token = '{{ csrf_token() }}';
 </script>

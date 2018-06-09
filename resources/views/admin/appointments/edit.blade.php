@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
+    @include('partials.dashboard')
     <h3 class="page-title">@lang('quickadmin.appointments.title')</h3>
     
     {!! Form::model($appointment, ['method' => 'PUT', 'route' => ['admin.appointments.update', $appointment->id]]) !!}
@@ -14,7 +15,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('client_id', 'Client*', ['class' => 'control-label']) !!}
-                    {!! Form::select('client_id', $clients, old('client_id'), ['class' => 'form-control select2', 'required' => '']) !!}
+                    {!! Form::select('client_id', [$appointment->client_id => \App\Client::find($appointment->client_id)->first_name],old('client_id'), ['class' => 'form-control', 'required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('client_id'))
                         <p class="help-block">
@@ -26,7 +27,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('employee_id', 'Employee*', ['class' => 'control-label']) !!}
-                    {!! Form::select('employee_id', $employees, old('employee_id'), ['class' => 'form-control select2', 'required' => '']) !!}
+                    {!! Form::select('employee_id', [$appointment->employee_id => \App\Employee::find($appointment->employee_id)->first_name],old('employee_id'), ['class' => 'form-control', 'required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('employee_id'))
                         <p class="help-block">

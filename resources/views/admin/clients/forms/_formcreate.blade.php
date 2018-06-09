@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-xs-12 form-group">
             {!! Form::label('first_name', 'First name', ['class' => 'control-label']) !!}
-            {!! Form::text('first_name', old('first_name'), ['class' => 'form-control', 'placeholder' => '']) !!}
+            {!! Form::text('first_name', old('first_name'), ['class' => 'form-control', 'placeholder' => '','required']) !!}
             <p class="help-block"></p>
             @if($errors->has('first_name'))
                 <p class="help-block">
@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-xs-12 form-group">
             {!! Form::label('last_name', 'Last name', ['class' => 'control-label']) !!}
-            {!! Form::text('last_name', old('last_name'), ['class' => 'form-control', 'placeholder' => '']) !!}
+            {!! Form::text('last_name', old('last_name'), ['class' => 'form-control', 'placeholder' => '','required']) !!}
             <p class="help-block"></p>
             @if($errors->has('last_name'))
                 <p class="help-block">
@@ -50,7 +50,7 @@
     <div class="row">
         <div class="col-xs-12 form-group">
             {!! Form::label('city', 'City', ['class' => 'control-label']) !!}
-            {!! Form::text('city', old('city'), ['class' => 'form-control', 'placeholder' => '']) !!}
+            {!! Form::text('city', old('city'), ['class' => 'form-control', 'placeholder' => '','required']) !!}
             <p class="help-block"></p>
             @if($errors->has('city'))
                 <p class="help-block">
@@ -62,7 +62,7 @@
     <div class="row">
         <div class="col-xs-12 form-group">
             {!! Form::label('state', 'state', ['class' => 'control-label']) !!}
-            {!! Form::text('state', old('state'), ['class' => 'form-control', 'placeholder' => '']) !!}
+            {!! Form::text('state', old('state'), ['class' => 'form-control', 'placeholder' => '','required']) !!}
             <p class="help-block"></p>
             @if($errors->has('state'))
                 <p class="help-block">

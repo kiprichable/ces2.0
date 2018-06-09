@@ -1,16 +1,27 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreClientsRequest;
 use App\Http\Requests\Admin\UpdateClientsRequest;
+use Illuminate\Support\Facades\Session;
 
 class ClientsController extends Controller
 {
+    protected $client;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(Client $client)
+    {
+        $this->client = $client;
+    }
     /**
      * Display a listing of Client.
      *
@@ -37,7 +48,9 @@ class ClientsController extends Controller
         if (! Gate::allows('client_create')) {
             return abort(401);
         }
-        return view('admin.clients.create');
+        return view('admin.clients.create')
+                ->withResidences($this->client->lastPlaceOfResidence())
+                ->withOptions(['Yes' => 'Yes', 'No' => 'No']);
     }
 
     /**
@@ -54,7 +67,7 @@ class ClientsController extends Controller
         $client = Client::create($request->all());
 
 
-
+        Session::flash('Client created successfully.');
         return redirect()->route('admin.clients.index');
     }
 

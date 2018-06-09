@@ -17,7 +17,7 @@ class Client extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['first_name', 'last_name', 'phone', 'email'];
+    protected $guarded = [];
     
 
     public function lastPlaceOfResidence()
