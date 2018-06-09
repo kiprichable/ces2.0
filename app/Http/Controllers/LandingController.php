@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\Home;
 use App\WorkingHour;
 use Illuminate\Http\Request;
@@ -21,7 +22,8 @@ class LandingController extends Controller
 
         return view('landing.index')
                 ->withContents($contents)
-                ->withworkinghours($working_hours);
+                ->withworkinghours($working_hours)
+                ->withEvents(Event::all());
     }
 
     /**

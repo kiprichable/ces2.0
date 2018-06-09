@@ -15,7 +15,18 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title')->nullable();
+            $table->longText('details')->nullable();
+            $table->string('location')->nullable();
+            $table->date('date')->nullable();
+            $table->datetime('start_time')->nullable();
+            $table->datetime('finish_time')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->index(['deleted_at']);
         });
     }
 

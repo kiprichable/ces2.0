@@ -156,82 +156,7 @@
                             <div id='calendar'>
 
                             </div>
-                            <div id="myModal" class="modal fade" role="dialog">
-                                <div class="modal-dialog">
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h3 class="page-title">@lang('quickadmin.working-hours.title')</h3>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="well">
-                                                        {!! Form::open(['method' => 'POST', 'route' => ['admin.working_hours.store']]) !!}
-                                                        <div class="row">
-                                                            <div class="col-xs-12 form-group">
-                                                                {!! Form::label('employee_id', 'Employee*', ['class' => 'control-label']) !!}
-                                                                <select name="employee_id" id="employee_id" value="{{ old('employee_id') }}" class="form-control" required>
-                                                                    <option value="">Please select</option>
-                                                                </select>
-                                                                <p class="help-block"></p>
-                                                                @if($errors->has('employee_id'))
-                                                                    <p class="help-block">
-                                                                        {{ $errors->first('employee_id') }}
-                                                                    </p>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-xs-12 form-group">
-                                                                {!! Form::label('date', 'Date*', ['class' => 'control-label']) !!}
-                                                                {!! Form::text('date', old('date'), ['class' => 'form-control date', 'placeholder' => '', 'required' => '','id' => 'date']) !!}
-                                                                <p class="help-block"></p>
-                                                                @if($errors->has('date'))
-                                                                    <p class="help-block">
-                                                                        {{ $errors->first('date') }}
-                                                                    </p>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-xs-12 form-group">
-                                                                {!! Form::label('start_time', 'Start time*', ['class' => 'control-label']) !!}
-                                                                {!! Form::text('start_time', old('start_time'), ['class' => 'form-control timepicker', 'placeholder' => '', 'required' => '','id' => 'start']) !!}
-                                                                <p class="help-block"></p>
-                                                                @if($errors->has('start_time'))
-                                                                    <p class="help-block">
-                                                                        {{ $errors->first('start_time') }}
-                                                                    </p>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-xs-12 form-group">
-                                                                {!! Form::label('finish_time', 'Finish time', ['class' => 'control-label']) !!}
-                                                                {!! Form::text('finish_time', old('finish_time'), ['class' => 'form-control timepicker', 'placeholder' => '','id' => 'end']) !!}
-                                                                <p class="help-block"></p>
-                                                                @if($errors->has('finish_time'))
-                                                                    <p class="help-block">
-                                                                        {{ $errors->first('finish_time') }}
-                                                                    </p>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                        {!! Form::submit(trans('quickadmin.qa_save'), ['class' => 'btn btn-danger col-lg-12']) !!}
-                                                    </div>
-                                                </div>
-
-
-                                                {!! Form::close() !!}
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            <!-- /.table-responsive -->
-                        </div>
+                            @include('events.modals._createModal')
                         <!-- /.col-lg-4 (nested) -->
                         <div class="col-lg-8">
                             <div id="morris-bar-chart"></div>
@@ -467,9 +392,10 @@
                     //hiddenDays: [ 1, 3, 5 ],
 
                     weekends: false,
+                    @if(Auth::user())
                     editable: true,
                     selectable: true,
-
+                    @endif
                     //When u select some space in the calendar do the following:
                     select: function (start, end, allDay) {
 
@@ -484,12 +410,12 @@
 
                     },
                     events : [
-                            @foreach($workinghours as $hour)
+                            @foreach($events as $event)
                         {
-                            title : '{{ $hour->employee->first_name . ' ' . $hour->employee->last_name }}',
-                            start : '{{ $hour->date . ' ' . $hour->start_time }}',
-                            end : '{{ $hour->date . ' ' . $hour->finish_time }}',
-                            url : '{{ route('admin.working_hours.edit', $hour->id) }}'
+                            title : '{{$event->title}} - {{$event->details}} - {{$event->location}}',
+                            start : '{{$event->start_time}}',
+                            end : '{{$event->finish_time}}',
+                            url : '{{ url('admin/events/'.$event->id.'/edit') }}'
                         },
                         @endforeach
                     ]

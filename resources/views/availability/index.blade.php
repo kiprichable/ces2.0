@@ -1,14 +1,15 @@
 @extends('layouts.master')
 
 @section('content')
-    <div id="page-wrapper">
+    <div id="page-wrapper" style="margin-top: 5%">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12" style="background-color: #4db3a2">
                 <h2  class="lead page-header">Available Appointment Slots for {{$employee->first_name . ' '. $employee->last_name}}.</h2>
             </div>
             <!-- /.col-lg-12 -->
         </div>
 
+        <div class="row" style="margin-top: 2%">
 
         @if(empty($availability))
             <div class="alert alert-danger">
@@ -22,6 +23,7 @@
                 To make an appointment with <strong>{{$employee->first_name . ' '. $employee->last_name}}</strong> select a time slot that works for you and click book.
             </div>
             <hr />
+        </div>
         <div class="row">
         <table class="table table-condensed table-bordered" id="myTable">
             <thead>
