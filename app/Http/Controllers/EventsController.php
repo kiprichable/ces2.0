@@ -120,5 +120,8 @@ class EventsController extends Controller
 
         Session::flash('Event deleted successfully.');
 
+        return redirect('admin/events');
+
+
     }
 }

@@ -38,7 +38,6 @@ class StatisticsController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->input());
         $requestData =
                 [
                 'title' => $request->input('title'),
@@ -86,7 +85,18 @@ class StatisticsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $requestData =
+                [
+                        'title' => $request->input('title'),
+                        'content' => $request->input('content'),
+                        'updated_by' => Auth::user()->email,
+                ];
+
+        Statistic::find($id)->update($requestData);
+
+        Session::flash('Statistics updated successfully.');
+
+        return redirect('admin/statistics');
     }
 
     /**
@@ -97,6 +107,10 @@ class StatisticsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Statistic::find($id)->delete();
+
+        Session::flash('Statistics deleted successfully.');
+
+        return redirect('admin/statistics');
     }
 }

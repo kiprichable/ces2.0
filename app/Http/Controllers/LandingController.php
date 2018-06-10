@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use App\Home;
+use App\Statistic;
 use App\WorkingHour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,7 @@ class LandingController extends Controller
         return view('landing.index')
                 ->withContents($contents)
                 ->withworkinghours($working_hours)
+                ->withStatistics(Statistic::all())
                 ->withEvents(Event::all());
     }
 

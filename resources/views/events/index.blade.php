@@ -38,7 +38,6 @@
                 </div>
                 <hr />
             </div>
-
         <div class="row">
             <table class="table table-condensed table-bordered" id="myTable">
                 <thead>
@@ -66,13 +65,31 @@
                             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal{{$event->id}}">
                                 <span class="fa fa-edit"> Edit</span>
                             </button>
-                            <button class="btn btn-danger">
+                            <button class="btn btn-danger" id="delete{{$event->id}}">
                                 <span class="fa fa-trash"> Delete</span>
                             </button>
 
+                            {!! Form::open(['method' => 'DELETE', 'url' => 'admin/events/'.$event->id,'id' => $event->id]) !!}
+                            {{Form::close()}}
+
                         </td>
+
                             @endif
                     </tr>
+                    <script>
+                        $(document).ready(function()
+                        {
+                            $('{{'#delete'.$event->id}}').click(function () {
+                                var r = confirm("Are you sure you want to delete this event");
+                                if (r == true) {
+                                    $('{{'#'.$event->id}}').submit();
+                                } else {
+
+                                }
+                            })
+
+                        } );
+                    </script>
                     @include('events.modals._editModal');
                 @endforeach
 

@@ -170,46 +170,50 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div class="list-group">
-                        @foreach($contents as $content)
+                        @foreach($statistics as $statistic)
                             <div id="menu">
                                 <a href="{{url('data/'.$content->id.'/edit')}}" class="pull-right"><span class="fa fa-edit "></span></a>
                                 <div class="panel list-group">
-                                    <a href="#" class="list-group-item" data-toggle="collapse" data-target="#{{$content->id}}" data-parent="#menu">{{$content->title}}
+                                    <a href="#" class="list-group-item" data-toggle="collapse" data-target="#{{$statistic->id}}" data-parent="#menu">{{$statistic->title}}
                                         <span class="fa fa-folder-open pull-right">
-                                            <a href="{{url('data/'.$content->id.'/edit')}}"></a>
+                                            <a href="{{url('data/'.$statistic->id.'/edit')}}"></a>
                                         </span>
                                     </a>
-                                    <div id="{{$content->id}}" class="sublinks collapse">
-                                        <a class="list-group-item small"></span>{{$content->content}}</a>
+                                    <div id="{{$statistic->id}}" class="sublinks collapse">
+                                        <blockquote>
+                                        {!!  $statistic->content !!}
+                                        </blockquote>
+
+
                                     </div>
                                 </div>
                             </div>
 
                         @endforeach
 
-                        <a href="http://hmismn.org/" class="list-group-item">
+                        <a href="http://hmismn.org/" class="list-group-item" target="_blank">
                             <i class="fa fa-info fa-fw"></i> MN Homeless Management Information System (HMIS)
-                            <span class="pull-right text-muted small"><em>Open</em>
+                            <span class="pull-right text-muted small">
                                     </span>
                         </a>
-                            <a href="http://www.wilder.org/Wilder-Research/Research-Areas/Homelessness/Pages/default.aspx" class="list-group-item">
+                            <a href="http://www.wilder.org/Wilder-Research/Research-Areas/Homelessness/Pages/default.aspx" class="list-group-item" target="_blank">
                                 <i class="fa fa-info fa-fw"></i> Wilder Foundation Research
-                                <span class="pull-right text-muted small"><em>Open</em>
+                                <span class="pull-right text-muted small">
                                     </span>
                             </a>
-                        <a href="http://www.endhomelessness.org/library/entry/the-state-of-homelessness-in-america-2015" class="list-group-item">
+                        <a href="http://www.endhomelessness.org/library/entry/the-state-of-homelessness-in-america-2015" class="list-group-item" target="_blank">
                                 <i class="fa fa-info fa-fw"></i> National Alliance to End Homelessness
-                                <span class="pull-right text-muted small"><em>Open</em>
+                                <span class="pull-right text-muted small">
                                     </span>
                             </a>
-                        <a href="http://www.greendoors.org/facts/general-data.php" class="list-group-item">
+                        <a href="http://www.greendoors.org/facts/general-data.php" class="list-group-item" target="_blank">
                                 <i class="fa fa-info fa-fw"></i> Greendoors Homelessness
-                                <span class="pull-right text-muted small"><em>Open</em>
+                                <span class="pull-right text-muted small">
                                     </span>
                             </a>
-                         <a href="http://frontsteps.org/u-s-homelessness-facts/" class="list-group-item">
+                         <a href="http://frontsteps.org/u-s-homelessness-facts/" class="list-group-item" target="_blank">
                                 <i class="fa fa-info fa-fw"></i> Frontsteps Homelessness
-                                <span class="pull-right text-muted small"><em>Open</em>
+                                <span class="pull-right text-muted small">
                                     </span>
                             </a>
 
@@ -355,6 +359,11 @@
     @section('javascript')
         <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
+        <script src="{{URL::Asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
+        <script>
+            CKEDITOR.replace( 'editor' );
+        </script>
+
         <script>
             $(document).ready(function() {
                 // page is now ready, initialize the calendar...
