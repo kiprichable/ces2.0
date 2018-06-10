@@ -1,10 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-    <h3 class="page-title">@lang('quickadmin.users.title')</h3>
+    <div id="page-wrapper" style="margin-top: 5%">
+        <div class="row">
+            <div class="col-lg-12" style="background-color: #4db3a2">
+                <h2  class="lead page-header">@lang('quickadmin.users.title')</h2>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
     {!! Form::open(['method' => 'POST', 'route' => ['admin.users.store']]) !!}
 
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="margin-top: 2%">
         <div class="panel-heading">
             @lang('quickadmin.qa_create')
         </div>
@@ -49,7 +55,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('role_id', 'Role*', ['class' => 'control-label']) !!}
-                    {!! Form::select('role_id', $roles, old('role_id'), ['class' => 'form-control select2', 'required' => '']) !!}
+                    {!! Form::select('role_id', $roles, old('role_id'), ['class' => 'form-control', 'required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('role_id'))
                         <p class="help-block">
@@ -60,6 +66,7 @@
             </div>
             
         </div>
+    </div>
     </div>
 
     {!! Form::submit(trans('quickadmin.qa_save'), ['class' => 'btn btn-danger']) !!}

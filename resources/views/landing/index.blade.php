@@ -58,10 +58,7 @@
 </style>
 <div class="page-wrapper">
     <div class="col-lg-12" style="background-color: #4db3a2">
-        <h1 class="page-header ">
-            <span class="caption-subject text-uppercase">Home</span>
-            <a href="{{url('/')}}"><span class="caption-helper">Homepage</span></a>
-        </h1>
+        <h1 class="page-header lead">Home</h1>
     </div>
     <div class="row" style="margin-top: 5%">
         <div class="col-lg-8">
@@ -105,15 +102,15 @@
                                         </div>
                                         <div class="portlet-body">
                                             <div class="actions">
-                                                {{--@if(Auth::user())--}}
+                                                @if(Auth::user())
                                                 <a href="{{url('home/'.$content->id.'/edit')}}" class="btn">
                                                     <i class="fa fa-edit"></i>
                                                     Edit
                                                 </a>
-                                                {{--@endif--}}
+                                                @endif
                                             </div>
                                             <span class="caption-helper">{{$content->created_at}}</span>
-                                            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+                                            <p>{{$content->content}}</p>
                                         </div>
                                     </div>
                                     <!-- END Portlet PORTLET-->
@@ -154,6 +151,7 @@
             <div class="panel panel-default" style="margin-top: 2%">
                 <div class="panel-heading">
                     <i class="fa fa-bell fa-fw"></i> Stats/Data
+                    @if(Auth::user())
                     <div class="btn-group pull-right">
                         <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-chevron-down"></i>
@@ -166,6 +164,7 @@
                             </li>
                         </ul>
                     </div>
+                   @endif
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">

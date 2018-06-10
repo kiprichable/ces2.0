@@ -1,15 +1,23 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-    <h3 class="page-title">@lang('quickadmin.employees.title')</h3>
-    @can('employee_create')
-    <p>
-        <a href="{{ route('admin.employees.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-        
-    </p>
-    @endcan
+    <div id="page-wrapper" style="margin-top: 5%">
+        <div class="row">
+            <div class="col-lg-12" style="background-color: #4db3a2">
+                <h2  class="lead page-header">@lang('quickadmin.employees.title')</h2>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
 
-    <div class="panel panel-default">
+        @can('employee_create')
+            <div class="pull-right" style="margin: 1%">
+                <a href="{{route('admin.employees.create')}}" class="btn btn-block btn-primary">
+                    <span class="fa fa-plus"> Add New Employee</span>
+                </a>
+            </div>
+        @endcan
+
+    <div class="panel panel-default" style="margin: 5%">
         <div class="panel-heading">
             @lang('quickadmin.qa_list')
         </div>
@@ -26,7 +34,6 @@
                         <th>@lang('quickadmin.employees.fields.last-name')</th>
                         <th>@lang('quickadmin.employees.fields.phone')</th>
                         <th>@lang('quickadmin.employees.fields.email')</th>
-						<th>@lang('quickadmin.employees.fields.services')</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -43,11 +50,7 @@
                                 <td>{{ $employee->last_name }}</td>
                                 <td>{{ $employee->phone }}</td>
                                 <td>{{ $employee->email }}</td>
-								<td>
-								@foreach($employee->services as $service)
-								<span class="label label-success">{{ $service->name }}</span>
-								@endforeach
-								</td>								
+
                                 <td>
                                     @can('employee_view')
                                     <a href="{{ route('admin.employees.show',[$employee->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
@@ -75,6 +78,7 @@
                 </tbody>
             </table>
         </div>
+    </div>
     </div>
 @stop
 

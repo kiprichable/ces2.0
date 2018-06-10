@@ -55,12 +55,7 @@ class EmployeesController extends Controller
         if (! Gate::allows('employee_create')) {
             return abort(401);
         }
-        $employee = Employee::create($request->only(['first_name', 'last_name', 'phone', 'email']));
-		$services_ids = [];
-		foreach($request->services as $service) :
-		$services_ids[] = $service;
-		endforeach;
-		$employee->services()->attach($services_ids);
+        Employee::create($request->only(['first_name', 'last_name', 'phone', 'email']));
 
         return redirect()->route('admin.employees.index');
     }

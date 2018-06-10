@@ -17,9 +17,9 @@ class AppointmentsController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('appointment_access')) {
-            return abort(401);
-        }
+//        if (! Gate::allows('appointment_access')) {
+//            return abort(401);
+//        }
 
         $appointments = Appointment::all();
 
@@ -33,7 +33,7 @@ class AppointmentsController extends Controller
      */
     public function create()
     {
-
+        return view('partials.prescreen');
     }
 
     /**

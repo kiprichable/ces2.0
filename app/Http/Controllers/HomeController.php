@@ -7,6 +7,7 @@ use App\Employee;
 use App\Home;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +28,16 @@ class HomeController extends Controller
 
     public function getEmployeeList()
     {
-        $employees = Employee::all();
+        $employees = DB::table('employees')
+                ->select('first_name','last_name')
+                ->join('working_hours','working_hours.employee_id','=','employees.id')
+                ->where('working_hours.date','>=',date('Y-m-d'))
+                ->select('employees.*')
+                ->distinct()
+                ->get()->toArray();
+
+
+
         return DataTables::of($employees)
                 ->addColumn('action', function ($employees) {
                     return '<a href="availability/'.$employees->id.'" class="btn btn-xs btn-primary"><i class="fa fa-street-view"></i> View Availability</a>';
