@@ -26,8 +26,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
-        
-
+        $this->app->bind(
+                \App\Repositories\Availability\AvailabilityInterfaceContract::class,
+                \App\Repositories\Availability\AvailabilityInterface::class
+        );
     }
 }

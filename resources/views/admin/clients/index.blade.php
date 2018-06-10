@@ -1,15 +1,22 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-    <h3 class="page-title">@lang('quickadmin.clients.title')</h3>
+    <div id="page-wrapper" style="margin-top: 5%">
+        <div class="row">
+            <div class="col-lg-12" style="background-color: #4db3a2">
+                <h2  class="lead page-header">@lang('quickadmin.clients.title')</h2>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+
+
     @can('client_create')
-    <p>
-        <a href="{{ route('admin.clients.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-        
-    </p>
+            <a href="{{ route('admin.clients.create') }}" class="pull-right btn btn-primary" style="margin-top: 2%">@lang('quickadmin.qa_add_new')</a>
+
     @endcan
 
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="margin-top: 2%">
+
         <div class="panel-heading">
             @lang('quickadmin.qa_list')
         </div>
@@ -69,6 +76,7 @@
                 </tbody>
             </table>
         </div>
+    </div>
     </div>
 @stop
 

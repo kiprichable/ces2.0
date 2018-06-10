@@ -1,17 +1,24 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-    <h3 class="page-title">@lang('quickadmin.working-hours.title')</h3>
-    @can('working_hour_create')
-    <p>
-        <a href="{{ route('admin.working_hours.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-        
-    </p>
-    @endcan
+    <div id="page-wrapper" style="margin-top: 5%">
+        <div class="row">
+            <div class="col-lg-12" style="background-color: #4db3a2">
+                <h2  class="lead page-header">@lang('quickadmin.working-hours.title')</h2>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        @can('working_hour_create')
+            <div class="pull-right" style="margin: 1%">
+                <a href="{{route('admin.working_hours.create')}}" class="btn btn-block btn-primary">
+                    <span class="fa fa-plus"> Add</span>
+                </a>
+            </div>
+        @endcan
 
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
 
-    <div id='calendar'></div>
+    <div id='calendar' style="margin-top: 5%"></div>
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
@@ -94,6 +101,7 @@
             </div>
 
         </div>
+    </div>
     </div>
 
 @stop

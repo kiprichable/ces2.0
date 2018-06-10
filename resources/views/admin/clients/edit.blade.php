@@ -1,11 +1,17 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-    <h3 class="page-title">@lang('quickadmin.clients.title')</h3>
+    <div id="page-wrapper" style="margin-top: 5%">
+        <div class="row">
+            <div class="col-lg-12" style="background-color: #4db3a2">
+                <h2  class="lead page-header">@lang('quickadmin.clients.title')</h2>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
     
     {!! Form::model($client, ['method' => 'PUT', 'route' => ['admin.clients.update', $client->id]]) !!}
 
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="margin-top: 2%">
         <div class="panel-heading">
             @lang('quickadmin.qa_edit')
         </div>
@@ -62,8 +68,9 @@
             
         </div>
     </div>
+    </div>
 
-    {!! Form::submit(trans('quickadmin.qa_update'), ['class' => 'btn btn-danger']) !!}
+    {!! Form::submit(trans('quickadmin.qa_update'), ['class' => 'btn btn-block btn-danger']) !!}
     {!! Form::close() !!}
 @stop
 

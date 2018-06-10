@@ -5,14 +5,14 @@
             data-keep-expanded="false"
             data-auto-scroll="true"
             data-slide-speed="200">
-            
+
             <li class="{{ $request->segment(1) == 'home' ? 'active' : '' }}">
                 <a href="{{ url('/') }}">
                     <i class="fa fa-wrench"></i>
                     <span class="title">@lang('quickadmin.qa_dashboard')</span>
                 </a>
             </li>
-            
+
             @can('client_access')
             <li class="{{ $request->segment(2) == 'clients' ? 'active' : '' }}">
                 <a href="{{ route('admin.clients.index') }}">
@@ -21,7 +21,7 @@
                 </a>
             </li>
             @endcan
-            
+
             @can('employee_access')
             <li class="{{ $request->segment(2) == 'employees' ? 'active' : '' }}">
                 <a href="{{ route('admin.employees.index') }}">
@@ -30,7 +30,7 @@
                 </a>
             </li>
             @endcan
-            
+
             @can('working_hour_access')
             <li class="{{ $request->segment(2) == 'working_hours' ? 'active' : '' }}">
                 <a href="{{ route('admin.working_hours.index') }}">
@@ -46,8 +46,8 @@
                     <span class="title">@lang('quickadmin.services.title')</span>
                 </a>
             </li>
-            @endcan			
-            
+            @endcan
+
             @can('appointment_access')
             <li class="{{ $request->segment(2) == 'appointments' ? 'active' : '' }}">
                 <a href="{{ route('admin.appointments.index') }}">

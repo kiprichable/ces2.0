@@ -1,7 +1,13 @@
 <?php
-Route::get('/','HomeController@index');
+Route::get('/','LandingController@index');
+Route::get('/home','HomeController@index');
+Route::resource('home','HomeController');
 Route::get('employees-list','HomeController@getEmployeeList');
 Route::resource('availability','AvailabilityController');
+Route::patch('appointment-create','AvailabilityController@update');
+Route::patch('appointment-create/{id}','AvailabilityController@update');
+Route::get('events', 'EventsController@index');
+Route::get('statistics', 'StatisticsController@index');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('appointments', 'Admin\AppointmentsController');
@@ -23,6 +29,16 @@ $this->post('password/reset', 'Auth\ResetPasswordController@reset')->name('auth.
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/home', 'HomeController@index');
+
+    Route::resource('events', 'EventsController',
+        [
+                'only' => ['edit','update','create','store']
+        ]
+    );
+    Route::resource('statistics', 'StatisticsController',
+            [
+                    'only' => ['edit','update','create','store']
+            ]);
     Route::resource('roles', 'Admin\RolesController');
     Route::post('roles_mass_destroy', ['uses' => 'Admin\RolesController@massDestroy', 'as' => 'roles.mass_destroy']);
     Route::resource('users', 'Admin\UsersController');

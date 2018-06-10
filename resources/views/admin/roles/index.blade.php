@@ -1,15 +1,22 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-    <h3 class="page-title">@lang('quickadmin.roles.title')</h3>
+    <div id="page-wrapper" style="margin-top: 5%">
+        <div class="row">
+            <div class="col-lg-12" style="background-color: #4db3a2">
+                <h2  class="lead page-header">@lang('quickadmin.roles.title')</h2>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
     @can('role_create')
-    <p>
-        <a href="{{ route('admin.roles.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-        
-    </p>
+        <div class="pull-right" style="margin: 1%">
+            <a href="{{route('admin.roles.create')}}" class="btn btn-block btn-primary">
+                <span class="fa fa-plus"> Add New Role</span>
+            </a>
+        </div>
     @endcan
 
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="margin-top: 5%">
         <div class="panel-heading">
             @lang('quickadmin.qa_list')
         </div>
@@ -63,6 +70,7 @@
                 </tbody>
             </table>
         </div>
+    </div>
     </div>
 @stop
 
