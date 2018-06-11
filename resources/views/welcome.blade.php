@@ -15,9 +15,32 @@
             <h3>Case Managers.</h3>
             <hr />
 
-            <table id="employee-list" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <table class="table table-condensed table-bordered" id="myTable">
+                <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last name</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($availability as $available)
+                    <tr>
+                        <td>{{$available->first_name}}</td>
+                        <td>{{$available->last_name}}</td>
+                        <td><a href="{{'availability/'.$available->id}}" class="btn btn-xs btn-primary"><i class="fa fa-street-view"></i> View Availability</a></td>
+                    </tr>
+                @endforeach
 
+                </tbody>
             </table>
+
+
+            <script>
+                $(document).ready(function() {
+                    $('#myTable').DataTable();
+                } );
+            </script>
 
             <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
 
@@ -26,22 +49,6 @@
 
                 </div>
             @endforeach
-
-            <script>
-                $(function() {
-                    $('#employee-list').DataTable({
-                        processing: true,
-                        serverSide: true,
-                        ajax: '{{ url('employees-list') }}',
-                        columns: [
-                            { data: 'first_name', name: 'first_name' },
-                            { data: 'last_name', name: 'last_name' },
-                            {data: 'action', name: 'action', orderable: false, searchable: false}
-
-                        ]
-                    });
-                });
-            </script>
         </div>
         </div>
 

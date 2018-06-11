@@ -9,7 +9,6 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -38,11 +37,7 @@ class HomeController extends Controller
 
 
 
-        return DataTables::of($employees)
-                ->addColumn('action', function ($employees) {
-                    return '<a href="availability/'.$employees->id.'" class="btn btn-xs btn-primary"><i class="fa fa-street-view"></i> View Availability</a>';
-                })
-                ->make(true);
+        return $employees;
     }
 
     /**
@@ -57,6 +52,7 @@ class HomeController extends Controller
         return view('welcome')
                 ->withAppointments(\App\Appointment::all())
                 ->withResidences($this->client->lastPlaceOfResidence())
+                ->withAvailability($this->getEmployeeList())
                 ->withEmployees(Employee::all()->pluck('last_name','id'))
                 ->withOptions($options)
                 ;

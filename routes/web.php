@@ -2,7 +2,6 @@
 Route::get('/','LandingController@index');
 Route::get('/home','HomeController@index');
 Route::resource('home','HomeController');
-Route::get('employees-list','HomeController@getEmployeeList');
 Route::resource('availability','AvailabilityController');
 Route::patch('appointment-create','AvailabilityController@update');
 Route::patch('appointment-create/{id}','AvailabilityController@update');
