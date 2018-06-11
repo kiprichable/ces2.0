@@ -111,7 +111,7 @@
                                             </div>
                                             <span class="caption-helper">{{$content->created_at}}</span>
                                             <p>{!!substr($content->content,0,200)!!}</p>
-                                            <div id="collapse{{$content->id}}" style="display:none; border-top: black 2em">
+                                            <div id="collapse{{$content->id}}" style="display:none;">
                                                 {!!$content->content!!}
                                             </div>
                                             <a href="#collapse{{$content->id}}" class="nav-toggle">Read More</a>
