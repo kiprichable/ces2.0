@@ -110,7 +110,7 @@
                                                 @endif
                                             </div>
                                             <span class="caption-helper">{{$content->created_at}}</span>
-                                            <p>{{$content->content}}</p>
+                                            <p>{!!$content->content!!}</p>
                                         </div>
                                     </div>
                                     <!-- END Portlet PORTLET-->
