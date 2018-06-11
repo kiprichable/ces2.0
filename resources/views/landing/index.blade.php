@@ -110,7 +110,11 @@
                                                 @endif
                                             </div>
                                             <span class="caption-helper">{{$content->created_at}}</span>
-                                            <p>{!!$content->content!!}</p>
+                                            <p>{!!substr($content->content,0,300)!!}</p>
+                                            <div id="collapse{{$content->id}}" style="display:none">
+                                                {!!substr($content->content,300)!!}
+                                            </div>
+                                            <a href="#collapse{{$content->id}}" class="nav-toggle">Read More</a>
                                         </div>
                                     </div>
                                     <!-- END Portlet PORTLET-->
@@ -158,7 +162,7 @@
                         </button>
                         <ul class="dropdown-menu slidedown">
                             <li>
-                                <a href="{{url('admin/statistics')}}">
+                                <a href="{{url('statistics')}}">
                                     <i class="fa fa-edit fa-fw"></i> Edit Stats/Data
                                 </a>
                             </li>
@@ -357,7 +361,22 @@
     @section('javascript')
         <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
+        <script>
+            $(document).ready(function () {
+                $('.nav-toggle').click(function () {
+                    var collapse_content_selector = $(this).attr('href');
+                    var toggle_switch = $(this);
+                    $(collapse_content_selector).toggle(function () {
+                        if ($(this).css('display') == 'none') {
+                            toggle_switch.html('Read More');
+                        } else {
+                            toggle_switch.html('Read Less');
+                        }
+                    });
+                });
 
+            });
+        </script>
         <script>
             $(document).ready(function() {
                 // page is now ready, initialize the calendar...
