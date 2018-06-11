@@ -224,18 +224,18 @@
             <!-- /.panel -->
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
+                    <i class="fa fa-address-card fa-fw"></i> Contact Info
                 </div>
                 <div class="panel-body">
                     <div id="morris-donut-chart"></div>
-                    <a href="#" class="btn btn-default btn-block">View Details</a>
+
                 </div>
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->
             <div class="chat-panel panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-comments fa-fw"></i> Chat
+                    <i class="fa fa-clock-o fa-fw"></i> Measures - To be edited.
                     <div class="btn-group pull-right">
                         <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-chevron-down"></i>
