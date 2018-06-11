@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('content', 'content', ['class' => 'control-label']) !!}
-                    {!! Form::textarea('content', $home->content, ['class' => 'form-control', 'required' => '']) !!}
+                    {!! Form::textarea('content', $home->content, ['class' => 'form-control', 'required' => '','id' => 'editor']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('content'))
                         <p class="help-block">
@@ -41,6 +41,10 @@
     </div>
     </div>
 
+    <script src="{{URL::Asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
+    <script>
+        CKEDITOR.replace( 'editor' );
+    </script>
     {!! Form::submit(trans('quickadmin.qa_update'), ['class' => 'col-lg-12 btn btn-danger']) !!}
     {!! Form::close() !!}
 @stop
