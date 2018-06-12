@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreWorkingHoursRequest;
 use App\Http\Requests\Admin\UpdateWorkingHoursRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class WorkingHoursController extends Controller
 {

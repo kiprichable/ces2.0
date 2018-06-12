@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreEmployeesRequest;
 use App\Http\Requests\Admin\UpdateEmployeesRequest;
+use Illuminate\Support\Facades\Session;
 use DB;
 class EmployeesController extends Controller
 {

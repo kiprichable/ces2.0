@@ -195,13 +195,13 @@
 @if( Session::has('flash_message'))
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#myModal').modal();
+            $('#myFlashModal').modal();
         });
     </script>
 @endif
 
 <!-- Modal -->
-<div class="modal" id="myModal" role="dialog">
+<div class="modal" id="myFlashModal" role="dialog">
     <div class="modal-dialog">
             <div class="alert alert-success alert-dismissable">
                 <strong>Success!</strong> {{Session::get('flash_message')}}

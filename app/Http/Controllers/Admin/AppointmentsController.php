@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UpdateAppointmentsRequest;
+use Illuminate\Support\Facades\Session;
+
 
 class AppointmentsController extends Controller
 {
