@@ -57,6 +57,8 @@ class EmployeesController extends Controller
         }
         Employee::create($request->only(['first_name', 'last_name', 'phone', 'email']));
 
+        Session::flash('flash_message','Employee created successfully.');
+
         return redirect()->route('admin.employees.index');
     }
 
@@ -93,6 +95,7 @@ class EmployeesController extends Controller
         $employee->update($request->all());
 
 
+        Session::flash('flash_message','Employee updated successfully.');
 
         return redirect()->route('admin.employees.index');
     }
@@ -133,6 +136,9 @@ class EmployeesController extends Controller
         }
         $employee = Employee::findOrFail($id);
         $employee->delete();
+
+        Session::flash('flash_message','Employee deleted successfully.');
+
 
         return redirect()->route('admin.employees.index');
     }

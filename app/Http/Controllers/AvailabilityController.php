@@ -147,7 +147,10 @@ class AvailabilityController extends Controller
 
         }
 
-        return redirect()->to('/')->with('flash_message','Appointment created');
+        Session::flash('flash_message','Appointment created successfully.');
+
+
+        return redirect()->to('/');
 
 
     }

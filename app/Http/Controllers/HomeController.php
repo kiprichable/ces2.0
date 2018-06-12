@@ -76,7 +76,10 @@ class HomeController extends Controller
         $home->updated_by = Auth::user()->email;
         $home->save();
 
-        Session::flash('Content created successfully');
+
+        Session::flash('flash_message','Content created successfully');
+        return redirect('/');
+
     }
 
     /**
@@ -120,7 +123,10 @@ class HomeController extends Controller
 
         $home->save();
 
-        return redirect('/')->with('flash_success','Home content updated successfully.');
+
+        Session::flash('flash_message','Home content updated successfully.');
+
+        return redirect('/');
     }
 
     /**

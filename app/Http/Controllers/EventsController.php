@@ -52,7 +52,8 @@ class EventsController extends Controller
 
        Event::create($requestData);
 
-       Session::flash('Event created successfully.');
+
+        Session::flash('flash_message','Event created successfully.');
 
        return redirect('admin/events');
     }
@@ -103,7 +104,7 @@ class EventsController extends Controller
 
         Event::find($id)->update($requestData);
 
-        Session::flash('Event update successfully.');
+        Session::flash('flash_message','Event updated successfully.');
 
         return redirect('admin/events');
     }
@@ -118,7 +119,7 @@ class EventsController extends Controller
     {
         Event::find($id)->delete();
 
-        Session::flash('Event deleted successfully.');
+        Session::flash('flash_message','Event deleted successfully.');
 
         return redirect('admin/events');
 
