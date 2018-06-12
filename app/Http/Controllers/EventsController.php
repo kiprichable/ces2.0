@@ -55,7 +55,7 @@ class EventsController extends Controller
 
         Session::flash('flash_message','Event created successfully.');
 
-       return redirect('admin/events');
+       return redirect('events');
     }
 
     /**
@@ -106,7 +106,7 @@ class EventsController extends Controller
 
         Session::flash('flash_message','Event updated successfully.');
 
-        return redirect('admin/events');
+        return redirect('events');
     }
 
     /**
@@ -121,7 +121,7 @@ class EventsController extends Controller
 
         Session::flash('flash_message','Event deleted successfully.');
 
-        return redirect('admin/events');
+        return redirect('events');
 
 
     }
