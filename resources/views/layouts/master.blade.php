@@ -192,13 +192,24 @@
     <!-- /.navbar-top-links -->
 
 </nav>
+@if( Session::has('flash_message'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#myModal').modal();
+        });
+    </script>
+@endif
 
+<!-- Modal -->
+<div class="modal" id="myModal" role="dialog">
+    <div class="modal-dialog">
+            <div class="alert alert-success alert-dismissable">
+                <strong>Success!</strong> {{Session::get('flash_message')}}
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+    </div>
+</div>
 <div id="wrapper" style="background-color: #5583b4">
-    @if (Session::has('flash_message'))
-        <div class="note note-info">
-            <p>{{ Session::get('flash_message') }}</p>
-        </div>
-    @endif
     @if ($errors->count() > 0)
         <div class="note note-danger">
             <ul class="list-unstyled">
