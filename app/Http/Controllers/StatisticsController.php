@@ -94,9 +94,9 @@ class StatisticsController extends Controller
 
         Statistic::find($id)->update($requestData);
 
-        //Session::flash('Statistics updated successfully.');
+        Session::flash('flash_message','Statistics updated successfully.');
 
-        return redirect('admin/statistics');
+        return redirect('statistics');
     }
 
     /**
@@ -109,7 +109,7 @@ class StatisticsController extends Controller
     {
         Statistic::find($id)->delete();
 
-        //Session::flash('Statistics deleted successfully.');
+        Session::flash('flash_message','Statistics deleted successfully.');
 
         return redirect('admin/statistics');
     }
