@@ -7,6 +7,8 @@ Route::patch('appointment-create','AvailabilityController@update');
 Route::patch('appointment-create/{id}','AvailabilityController@update');
 Route::get('events', 'EventsController@index');
 Route::get('statistics', 'StatisticsController@index');
+Route::get('contacts', 'ContactsController@index');
+
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('appointments', 'Admin\AppointmentsController');
@@ -35,6 +37,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
         ]
     );
     Route::resource('statistics', 'StatisticsController',
+            [
+                    'only' => ['edit','update','create','store']
+            ]);
+    Route::resource('contacts', 'ContactsController',
             [
                     'only' => ['edit','update','create','store']
             ]);

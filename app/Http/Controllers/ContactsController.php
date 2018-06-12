@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
-use App\Event;
-use App\Home;
-use App\Statistic;
-use App\WorkingHour;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
-class LandingController extends Controller
+class ContactsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,15 +15,7 @@ class LandingController extends Controller
      */
     public function index()
     {
-        $contents = Home::all();
-        $working_hours = WorkingHour::all();
-
-        return view('landing.index')
-                ->withContents($contents)
-                ->withContacts(Contact::all())
-                ->withworkinghours($working_hours)
-                ->withStatistics(Statistic::all())
-                ->withEvents(Event::all());
+        return view('contacts.index')->withContacts(Contact::all());
     }
 
     /**
@@ -37,7 +25,8 @@ class LandingController extends Controller
      */
     public function create()
     {
-        //
+        return view('contacts.create');
+
     }
 
     /**
@@ -48,7 +37,13 @@ class LandingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        Contact::create($request->input());
+
+        Session::flash('flash_message','Contact created successfully.');
+
+        return redirect('contacts');
+
     }
 
     /**
@@ -70,9 +65,9 @@ class LandingController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('contacts.edit')
+                ->withContact(Contact::find($id));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -82,7 +77,13 @@ class LandingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+
+        Contact::find($id)->update($request->input());
+
+        Session::flash('flash_message','Contact updated successfully.');
+
+        return redirect('contacts');
     }
 
     /**
@@ -93,6 +94,10 @@ class LandingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Contact::find($id)->delete();
+
+        Session::flash('flash_message','Contact deleted successfully.');
+
+        return redirect('contacts');
     }
 }
