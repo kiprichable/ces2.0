@@ -111,6 +111,17 @@
                         <div>Links to other sites</div>
                     </a>
                 </li>
+                <li>
+                    <a href="{{url('contacts')}}">
+                        <div>
+                            <strong>Contacts</strong>
+                            <span class="pull-right text-muted">
+                                        <em>Show all</em>
+                                    </span>
+                        </div>
+                        <div>Contact information</div>
+                    </a>
+                </li>
             </ul>
             <!-- /.dropdown-tasks -->
         </li>
