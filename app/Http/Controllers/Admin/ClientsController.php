@@ -66,8 +66,8 @@ class ClientsController extends Controller
         }
         $client = Client::create($request->all());
 
+        Session::flash('flash_message','Client created successfully.');
 
-        Session::flash('Client created successfully.');
         return redirect()->route('admin.clients.index');
     }
 
@@ -103,6 +103,7 @@ class ClientsController extends Controller
         $client = Client::findOrFail($id);
         $client->update($request->all());
 
+        Session::flash('flash_message','Client updated successfully.');
 
 
         return redirect()->route('admin.clients.index');
@@ -143,6 +144,9 @@ class ClientsController extends Controller
         }
         $client = Client::findOrFail($id);
         $client->delete();
+
+        Session::flash('flash_message','Client deleted successfully.');
+
 
         return redirect()->route('admin.clients.index');
     }

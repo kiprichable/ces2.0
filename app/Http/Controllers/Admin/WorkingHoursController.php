@@ -70,6 +70,7 @@ class WorkingHoursController extends Controller
         $working_hour = WorkingHour::create($request->all());
 
 
+        Session::flash('flash_message','Working calendar created successfully.');
 
         return redirect()->route('admin.working_hours.index');
     }
@@ -110,6 +111,7 @@ class WorkingHoursController extends Controller
         $working_hour = WorkingHour::findOrFail($id);
         $working_hour->update($request->all());
 
+        Session::flash('flash_message','Working calendar updated successfully.');
 
 
         return redirect()->route('admin.working_hours.index');
@@ -150,6 +152,8 @@ class WorkingHoursController extends Controller
         }
         $working_hour = WorkingHour::findOrFail($id);
         $working_hour->delete();
+
+        Session::flash('flash_message','Working calendar updated successfully.');
 
         return redirect()->route('admin.working_hours.index');
     }

@@ -58,6 +58,7 @@ class UsersController extends Controller
         $user = User::create($request->all());
 
 
+        Session::flash('flash_message','User created successfully.');
 
         return redirect()->route('admin.users.index');
     }
@@ -99,6 +100,7 @@ class UsersController extends Controller
         $user->update($request->all());
 
 
+        Session::flash('flash_message','User updated successfully.');
 
         return redirect()->route('admin.users.index');
     }
@@ -138,6 +140,9 @@ class UsersController extends Controller
         }
         $user = User::findOrFail($id);
         $user->delete();
+
+        Session::flash('flash_message','User deleted successfully.');
+
 
         return redirect()->route('admin.users.index');
     }

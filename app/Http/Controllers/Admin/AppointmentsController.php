@@ -85,6 +85,7 @@ class AppointmentsController extends Controller
         $appointment->update($request->all());
 
 
+        Session::flash('flash_message','Appointment updated successfully.');
 
         return redirect()->route('admin.appointments.index');
     }
@@ -125,6 +126,8 @@ class AppointmentsController extends Controller
         }
         $appointment = Appointment::findOrFail($id);
         $appointment->delete();
+
+        Session::flash('flash_message','Appointment deleted successfully.');
 
         return redirect()->route('admin.appointments.index');
     }
