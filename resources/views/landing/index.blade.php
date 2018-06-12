@@ -185,11 +185,7 @@
                                         </span>
                                     </a>
                                     <div id="{{$statistic->id}}" class="sublinks collapse">
-                                        <blockquote>
                                         {!!  $statistic->content !!}
-                                        </blockquote>
-
-
                                     </div>
                                 </div>
                             </div>
