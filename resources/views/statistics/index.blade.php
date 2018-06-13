@@ -23,11 +23,9 @@
                                             <a href="{{url('data/'.$statistic->id.'/edit')}}"></a>
                                         </span>
                                 </a>
-                                <div id="{{$statistic->id}}" class="sublinks collapse">
-                                    <blockquote>
-                                        {!!  $statistic->content !!}
-                                    </blockquote>
+                                <div id="{{$statistic->id}}" class="sublinks collapse panel-body">
 
+                                        {!!  $statistic->content !!}
 
                                 </div>
                             </div>
