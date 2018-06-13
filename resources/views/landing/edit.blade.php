@@ -9,7 +9,7 @@
     <h3 class="page-title lead"> Edit {{$home->title}}</h3>
     <hr>
 
-    {!! Form::open(['method' => 'PUT', 'url' => 'home/'.$home->id]) !!}
+    {!! Form::open(['method' => 'PUT', 'url' => 'admin/home/'.$home->id]) !!}
 
     <div class="row">
         <div class="panel-body">
