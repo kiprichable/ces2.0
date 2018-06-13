@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
-use App\Employee;
-use App\Home;
+use App\Models\Client;
+use App\Models\Employee;
+use App\Models\Home;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -50,7 +50,7 @@ class HomeController extends Controller
         $options = array('Yes' => 'Yes','No' => 'No');
 
         return view('welcome')
-                ->withAppointments(\App\Appointment::all())
+                ->withAppointments(\App\Models\Appointment::all())
                 ->withResidences($this->client->lastPlaceOfResidence())
                 ->withAvailability($this->getEmployeeList())
                 ->withEmployees(Employee::all()->pluck('last_name','id'))

@@ -135,7 +135,7 @@
                     <a href="{{url('admin/clients')}}">
                         <div>
                             <i class="fa fa-group fa-fw"></i> Clients
-                            <span class="pull-right text-muted small">{{\App\Client::all()->count()}}</span>
+                            <span class="pull-right text-muted small">{{\App\Models\Client::all()->count()}}</span>
                         </div>
                     </a>
                 </li>
@@ -144,7 +144,7 @@
                     <a href="{{url('admin/users')}}">
                         <div>
                             <i class="fa fa-user fa-fw"></i> Users
-                            <span class="pull-right text-muted small">{{\App\User::all()->count()}}</span>
+                            <span class="pull-right text-muted small">{{\App\Models\User::all()->count()}}</span>
                         </div>
                     </a>
                 </li>
@@ -152,7 +152,7 @@
                     <a href="{{url('admin/employees')}}">
                         <div>
                             <i class="fa fa-user fa-fw"></i> Employees
-                            <span class="pull-right text-muted small">{{\App\Employee::all()->count()}}</span>
+                            <span class="pull-right text-muted small">{{\App\Models\Employee::all()->count()}}</span>
                         </div>
                     </a>
                 </li>
@@ -212,11 +212,11 @@
 @endif
 
 <!-- Modal -->
-<div class="modal" id="myFlashModal" role="dialog">
+<div class="modal fade" id="myFlashModal" role="dialog">
     <div class="modal-dialog">
             <div class="alert alert-success alert-dismissable">
                 <strong>Success!</strong> {{Session::get('flash_message')}}
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
     </div>
 </div>

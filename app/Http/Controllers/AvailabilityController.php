@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Availability;
-use App\Employee;
+use App\Models\Availability;
+use App\Models\Employee;
 use App\Http\Requests\Availability\AvailabilityRequestPost;
-use App\WorkingHour;
-use App\Appointment;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use App\Client;
+use App\Models\Client;
 use Illuminate\Support\Facades\Session;
 
 class AvailabilityController extends Controller

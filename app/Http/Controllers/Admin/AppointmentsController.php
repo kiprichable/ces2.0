@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Appointment;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
@@ -62,8 +62,8 @@ class AppointmentsController extends Controller
             return abort(401);
         }
         $relations = [
-            'clients' => \App\Client::get()->pluck('first_name', 'id')->prepend('Please select', ''),
-            'employees' => \App\Employee::get()->pluck('first_name', 'id')->prepend('Please select', ''),
+            'clients' => \App\Models\Client::get()->pluck('first_name', 'id')->prepend('Please select', ''),
+            'employees' => \App\Models\Employee::get()->pluck('first_name', 'id')->prepend('Please select', ''),
         ];
 
         $appointment = Appointment::findOrFail($id);
@@ -105,8 +105,8 @@ class AppointmentsController extends Controller
             return abort(401);
         }
         $relations = [
-            'clients' => \App\Client::get()->pluck('first_name', 'id')->prepend('Please select', ''),
-            'employees' => \App\Employee::get()->pluck('first_name', 'id')->prepend('Please select', ''),
+            'clients' => \App\Models\Client::get()->pluck('first_name', 'id')->prepend('Please select', ''),
+            'employees' => \App\Models\Employee::get()->pluck('first_name', 'id')->prepend('Please select', ''),
         ];
 
         $appointment = Appointment::findOrFail($id);

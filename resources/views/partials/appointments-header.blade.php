@@ -25,7 +25,7 @@
 
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
 
-@foreach(\App\Employee::all() as $employee)
+@foreach(\App\Models\Employee::all() as $employee)
     <div id='{{$employee->id}}'>
 
     </div>

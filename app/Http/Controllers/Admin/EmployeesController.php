@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Employee;
-use App\Service;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
@@ -40,7 +39,7 @@ class EmployeesController extends Controller
             return abort(401);
         }
 		$relations = [
-            'services' => \App\Service::get()->pluck('name', 'id'),
+            'services' => \App\Models\Service::get()->pluck('name', 'id'),
         ];
         return view('admin.employees.create', $relations);
     }
@@ -114,8 +113,8 @@ class EmployeesController extends Controller
             return abort(401);
         }
         $relations = [
-            'working_hours' => \App\WorkingHour::where('employee_id', $id)->get(),
-            'appointments' => \App\Appointment::where('employee_id', $id)->get(),
+            'working_hours' => \App\Models\WorkingHour::where('employee_id', $id)->get(),
+            'appointments' => \App\Models\Appointment::where('employee_id', $id)->get(),
         ];
 
         $employee = Employee::findOrFail($id);
@@ -169,7 +168,7 @@ class EmployeesController extends Controller
 			$join->on('employees.id', '=', 'working_hours.employee_id')
 			->where('working_hours.date', '=', $request->date);
 		})->get();
-		$service = \App\Service::find($request->service_id);
+		$service = \App\Models\Service::find($request->service_id);
 		$html = "";
 		$html .= "<div class='row employees'>";
 		$html .= "<div class='col-xs-12 form-group'>";

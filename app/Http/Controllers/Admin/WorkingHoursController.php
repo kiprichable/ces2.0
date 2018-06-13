@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Employee;
-use App\WorkingHour;
+use App\Models\Employee;
+use App\Models\WorkingHour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
@@ -51,7 +51,7 @@ class WorkingHoursController extends Controller
             return abort(401);
         }
         $relations = [
-            'employees' => \App\Employee::get(),
+            'employees' => \App\Models\Employee::get(),
         ];
 
         return view('admin.working_hours.create', $relations);
@@ -89,7 +89,7 @@ class WorkingHoursController extends Controller
             return abort(401);
         }
         $relations = [
-            'employees' => \App\Employee::get()->pluck('first_name', 'id')->prepend('Please select', ''),
+            'employees' => \App\Models\Employee::get()->pluck('first_name', 'id')->prepend('Please select', ''),
         ];
 
         $working_hour = WorkingHour::findOrFail($id);
@@ -131,7 +131,7 @@ class WorkingHoursController extends Controller
             return abort(401);
         }
         $relations = [
-            'employees' => \App\Employee::get()->pluck('first_name', 'id')->prepend('Please select', ''),
+            'employees' => \App\Models\Employee::get()->pluck('first_name', 'id')->prepend('Please select', ''),
         ];
 
         $working_hour = WorkingHour::findOrFail($id);

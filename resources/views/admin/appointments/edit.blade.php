@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('client_id', 'Client*', ['class' => 'control-label']) !!}
-                    {!! Form::select('client_id', [$appointment->client_id => \App\Client::find($appointment->client_id)->first_name],old('client_id'), ['class' => 'form-control', 'required' => '']) !!}
+                    {!! Form::select('client_id', [$appointment->client_id => \App\Models\Client::find($appointment->client_id)->first_name],old('client_id'), ['class' => 'form-control', 'required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('client_id'))
                         <p class="help-block">
@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('employee_id', 'Employee*', ['class' => 'control-label']) !!}
-                    {!! Form::select('employee_id', [$appointment->employee_id => \App\Employee::find($appointment->employee_id)->first_name],old('employee_id'), ['class' => 'form-control', 'required' => '']) !!}
+                    {!! Form::select('employee_id', [$appointment->employee_id => \App\Models\Employee::find($appointment->employee_id)->first_name],old('employee_id'), ['class' => 'form-control', 'required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('employee_id'))
                         <p class="help-block">

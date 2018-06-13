@@ -1,7 +1,7 @@
 <?php
 namespace App\Repositories\Availability;
 
-use App\Availability;
+use App\Models\Availability;
 use Carbon\Carbon;
 class AvailabilityInterface implements AvailabilityInterfaceContract
 {
