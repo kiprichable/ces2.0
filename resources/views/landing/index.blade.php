@@ -66,31 +66,32 @@
                 <div class="panel-body">
                                 <!-- BEGIN Portlet PORTLET-->
                                 @if($contents->isEmpty())
-                                <div class="col-md-4 margin-bottom-30">
+                                <div class="col-lg-12 margin-bottom-30">
                                     <div class="portlet" style="margin-right:0%">
                                         <div class="portlet-title">
-                                            <div class="actions">
-                                                @if(Auth::user())
-                                                    <a href="javascript:;" class="btn">
-                                                        <i class="fa fa-edit"></i>
-                                                        Edit
-                                                    </a>
-                                                @endif
-                                            </div>
                                             <div class="caption caption-green">
                                                 <i class="fa fa-info-circle"></i>
-                                                <span class="caption-subject text-uppercase">Site Missing Content!.</span>
+                                                <span class="caption-subject text-uppercase">Default Content: Site Missing Content!.</span>
                                                 <span class="caption-helper">goes here..</span>
                                             </div>
 
                                         </div>
                                         <div class="portlet-body">
+                                            <div class="actions">
+                                            @if(Auth::user())
+                                                <a href="{{url('admin/home/create')}}" class="btn">
+                                                    <i class="fa fa-plus"></i>
+                                                    Add Content
+                                                </a>
+                                            @endif
+                                            </div>
                                             <span class="caption-helper">{{Carbon\Carbon::now()}}</span>
                                             <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
                                         </div>
                                     </div>
                                     </div>
-                                @endif
+                                @else
+
                                 @foreach($contents as $content)
                                 <div class="col-lg-4 margin-bottom-30">
                                     <div class="portlet">
@@ -103,7 +104,7 @@
                                         <div class="portlet-body">
                                             <div class="actions">
                                                 @if(Auth::user())
-                                                <a href="{{url('home/'.$content->id.'/edit')}}" class="btn">
+                                                <a href="{{url('admin/home/'.$content->id.'/edit')}}" class="btn">
                                                     <i class="fa fa-edit"></i>
                                                     Edit
                                                 </a>
@@ -122,6 +123,7 @@
                                     <!-- END Portlet PORTLET-->
                                 </div>
                             @endforeach
+                            @endif
                     </div>
             </div>
                 <!-- /.panel-body -->
@@ -177,11 +179,11 @@
                     <div class="list-group">
                         @foreach($statistics as $statistic)
                             <div id="menu">
-                                <a href="{{url('data/'.$content->id.'/edit')}}" class="pull-right"><span class="fa fa-edit "></span></a>
+                                <a href="{{url('admin/statistics/'.$statistic->id.'/edit')}}" class="pull-right"><span class="fa fa-edit "></span></a>
                                 <div class="panel list-group">
                                     <a href="#" class="list-group-item" data-toggle="collapse" data-target="#{{$statistic->id}}" data-parent="#menu">{{$statistic->title}}
                                         <span class="fa fa-folder-open pull-right">
-                                            <a href="{{url('data/'.$statistic->id.'/edit')}}"></a>
+                                            <a href="{{url('admin/statistics/'.$statistic->id.'/edit')}}"></a>
                                         </span>
                                     </a>
                                     <div id="{{$statistic->id}}" class="sublinks collapse">
@@ -227,6 +229,20 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-address-card fa-fw"></i> Contact Information
+                    @if(Auth::user())
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown-menu slidedown">
+                                <li>
+                                    <a href="{{url('contacts')}}">
+                                        <i class="fa fa-edit fa-fw"></i> Edit contacts
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    @endif
                 </div>
                 <div class="panel-body">
                     <ul class="chat">

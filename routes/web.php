@@ -1,10 +1,12 @@
 <?php
 Route::get('/','LandingController@index');
-Route::get('/home','HomeController@index');
-Route::resource('home','HomeController');
+//Route::resource('home','HomeController@index');
 Route::resource('availability','AvailabilityController');
 Route::patch('appointment-create','AvailabilityController@update');
 Route::patch('appointment-create/{id}','AvailabilityController@update');
+
+Route::get('home/{id}','HomeController@show');
+Route::get('home','HomeController@index');
 Route::get('events', 'EventsController@index');
 Route::get('statistics', 'StatisticsController@index');
 Route::get('contacts', 'ContactsController@index');
@@ -41,6 +43,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
                     'only' => ['edit','update','create','store']
             ]);
     Route::resource('contacts', 'ContactsController',
+            [
+                    'only' => ['edit','update','create','store']
+            ]);
+    Route::resource('home', 'HomeController',
             [
                     'only' => ['edit','update','create','store']
             ]);

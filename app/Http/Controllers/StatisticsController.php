@@ -47,9 +47,9 @@ class StatisticsController extends Controller
 
         Statistic::create($requestData);
 
-        Session::flash('Statistics created successfully.');
+        Session::flash('flash_message','Statistics created successfully.');
 
-        return redirect('admin/statistics');
+        return redirect('statistics');
     }
 
     /**
