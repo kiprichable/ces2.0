@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Statistic;
+use App\Models\Statistic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;

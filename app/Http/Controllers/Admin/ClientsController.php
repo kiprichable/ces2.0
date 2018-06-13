@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Client;
+use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
@@ -122,7 +122,7 @@ class ClientsController extends Controller
             return abort(401);
         }
         $relations = [
-            'appointments' => \App\Appointment::where('client_id', $id)->get(),
+            'appointments' => \App\Models\Appointment::where('client_id', $id)->get(),
         ];
 
         $client = Client::findOrFail($id);

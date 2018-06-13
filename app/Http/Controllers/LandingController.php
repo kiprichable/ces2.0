@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Contact;
-use App\Event;
-use App\Home;
-use App\Statistic;
-use App\WorkingHour;
+use App\Models\Contact;
+use App\Models\Event;
+use App\Models\Home;
+use App\Models\Statistic;
+use App\Models\WorkingHour;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class LandingController extends Controller
 {

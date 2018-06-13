@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
-use App\Service;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class ServicesController extends Controller

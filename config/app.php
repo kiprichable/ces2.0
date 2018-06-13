@@ -175,8 +175,10 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        //yajra\Datatables\DatatablesServiceProvider::class,
+        yajra\Datatables\DatatablesServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
+        jeremykenedy\LaravelLogger\LaravelLoggerServiceProvider::class,
+
 
 
 
@@ -243,7 +245,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-         //'Datatables' => yajra\Datatables\Datatables::class,
+
+         'Datatables' => yajra\Datatables\Datatables::class,
         /*
          * Package Aliases
          */

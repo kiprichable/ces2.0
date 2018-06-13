@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Role;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
@@ -112,7 +112,7 @@ class RolesController extends Controller
             return abort(401);
         }
         $relations = [
-            'users' => \App\User::where('role_id', $id)->get(),
+            'users' => \App\Models\User::where('role_id', $id)->get(),
         ];
 
         $role = Role::findOrFail($id);
