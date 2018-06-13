@@ -112,9 +112,6 @@
                                             </div>
                                             <span class="caption-helper">{{$content->created_at}}</span>
                                             <p>{!!substr($content->content,0,500)!!}</p>
-                                            <div id="collapse{{$content->id}}" style="display:none;">
-                                                {!!$content->content!!}
-                                            </div>
                                             <a href="{{url('home/'.$content->id)}}">
                                                 <span class="lead">Read more</span>
                                             </a>
@@ -186,8 +183,8 @@
                                             <a href="{{url('admin/statistics/'.$statistic->id.'/edit')}}"></a>
                                         </span>
                                     </a>
-                                    <div id="{{$statistic->id}}" class="sublinks collapse">
-                                        {!!  $statistic->content !!}
+                                    <div id="{{$statistic->id}}" class="sublinks collapse panel-body">
+                                            {!!  $statistic->content !!}
                                     </div>
                                 </div>
                             </div>
