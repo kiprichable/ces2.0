@@ -2,8 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Availability;
-use App\Employee;
+use App\Models\Employee;
 use App\Repositories\Availability\AvailabilityInterface;
 use Illuminate\Console\Command;
 

@@ -20,7 +20,7 @@ class Employee extends Model
     protected $fillable = ['first_name', 'last_name', 'phone', 'email'];
     public function services()
     {
-        return $this->belongsToMany('App\Service');
+        return $this->belongsToMany('App\Models\Service');
     }
 	
 	public function provides_service($service)
@@ -30,12 +30,12 @@ class Employee extends Model
 	
 	public function working_hours()
 	{
-		return $this->hasMany('App\WorkingHour', 'employee_id');
+		return $this->hasMany('App\Models\WorkingHour', 'employee_id');
 	}
     //retu
     public function working_days()
     {
-        return $this->hasMany('App\WorkingHour', 'employee_id');
+        return $this->hasMany('App\Models\WorkingHour', 'employee_id');
     }
 	
 	public function is_working($date) {

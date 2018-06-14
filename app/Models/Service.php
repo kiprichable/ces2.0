@@ -9,6 +9,6 @@ class Service extends Model
     protected $fillable = ['name', 'price'];
 	public function employees()
     {
-        return $this->belongsToMany('App\Employee');
+        return $this->belongsToMany('App\Models\Employee');
     }
 }
