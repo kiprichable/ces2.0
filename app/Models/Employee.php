@@ -49,6 +49,6 @@ class Employee extends Model
 
     public function availability()
     {
-        return $this->hasMany('App\Availability', 'employee_id');
+        return $this->hasMany('App\Models\Availability', 'employee_id');
     }
 }
