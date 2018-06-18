@@ -3,6 +3,8 @@ namespace App\Repositories\Availability;
 
 use App\Models\Availability;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
+
 class AvailabilityInterface implements AvailabilityInterfaceContract
 {
     public function getAllAvailability($employee)
@@ -57,9 +59,20 @@ class AvailabilityInterface implements AvailabilityInterfaceContract
 
     public function create($requestData)
     {
-        foreach ($requestData as $data)
+        if(emptyArray($requestData))
         {
-            Availability::firstOrCreate($data);
+            Log::debug('No new/future availability for this user');
         }
+        else
+        {
+            foreach ($requestData as $data)
+            {
+                Availability::firstOrCreate($data);
+
+                Log::info('Availability created for : '.$data['employee_id']);
+
+            }
+        }
+
     }
 }
