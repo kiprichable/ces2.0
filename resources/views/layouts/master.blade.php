@@ -45,7 +45,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand lead" href="{{url('/')}}">ST.LOUIS COUNTY CONTINUUM CARE</a>
+        <a class="navbar-brand lead" href="{{url('/')}}" style="font-style: italic; color: whitesmoke">ST.LOUIS COUNTY CONTINUUM OF CARE MN</a>
     </div>
     <!-- /.navbar-header -->
     @inject('request', 'Illuminate\Http\Request')
