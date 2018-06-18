@@ -45,7 +45,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{url('/')}}">Co-ordinated Entry System</a>
+        <a class="navbar-brand lead" href="{{url('/')}}">ST.LOUIS COUNTY CONTINUUM CARE</a>
     </div>
     <!-- /.navbar-header -->
     @inject('request', 'Illuminate\Http\Request')
