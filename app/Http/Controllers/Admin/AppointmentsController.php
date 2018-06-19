@@ -84,6 +84,7 @@ class AppointmentsController extends Controller
             return abort(401);
         }
         $appointment = Appointment::findOrFail($id);
+
         $appointment->update($request->all());
 
 

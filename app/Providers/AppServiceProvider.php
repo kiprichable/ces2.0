@@ -30,5 +30,10 @@ class AppServiceProvider extends ServiceProvider
                 \App\Repositories\Availability\AvailabilityInterfaceContract::class,
                 \App\Repositories\Availability\AvailabilityInterface::class
         );
+
+        $this->app->bind(
+                \App\Repositories\Employee\EmployeeInterfaceContract::class,
+                \App\Repositories\Employee\EmployeeInterface::class
+        );
     }
 }

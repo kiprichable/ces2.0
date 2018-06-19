@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Employee;
 use App\Models\WorkingHour;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreWorkingHoursRequest;
@@ -70,6 +71,7 @@ class WorkingHoursController extends Controller
         }
         $working_hour = WorkingHour::create($request->all());
 
+        Artisan::call('create:availability');
 
         Session::flash('flash_message','Working calendar created successfully.');
 
@@ -111,6 +113,10 @@ class WorkingHoursController extends Controller
         }
         $working_hour = WorkingHour::findOrFail($id);
         $working_hour->update($request->all());
+
+
+        Artisan::call('create:availability');
+
 
         Session::flash('flash_message','Working calendar updated successfully.');
 
