@@ -6,6 +6,7 @@ use App\Models\Availability;
 use App\Models\Employee;
 use App\Http\Requests\Availability\AvailabilityRequestPost;
 use App\Models\Appointment;
+use App\Repositories\Employee\EmployeeInterfaceContract;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Client;
@@ -14,16 +15,19 @@ use Illuminate\Support\Facades\Session;
 class AvailabilityController extends Controller
 {
     protected $client;
+    protected $appointmentTrait;
 
     /**
      * Create a new controller instance.
-     *
+     * @param $client
+     * @param $appointmentTrait
      * @return void
      */
-    public function __construct(Client $client)
+    public function __construct(Client $client, EmployeeInterfaceContract $appointmentTrait)
     {
         // $this->middleware('auth');
         $this->client = $client;
+        $this->appointmentTrait = $appointmentTrait;
     }
 
     /**
@@ -68,7 +72,11 @@ class AvailabilityController extends Controller
     {
         return view('availability.index')
                 ->withEmployee(Employee::find($id))
-                ->withAvailability(Employee::find($id)->availability()->whereNull('booked_at')->get());
+                ->withAvailability(Employee::find($id)
+                        ->availability()
+                        ->where('start_time','>',date('Y-m-d'))
+                        ->whereNull('booked_at')
+                        ->get());
 
     }
 
@@ -126,6 +134,13 @@ class AvailabilityController extends Controller
                 'last_night_residence' => $request->input('last_night_residence')
         ];
 
+        if(Client::where('email',$request->input('email'))->first())
+        {
+            Session::flash('flash_error','Email already in use.');
+
+            return redirect('availability/'.$id.'/edit')->withInput($request->input());
+        }
+
         if($Availability = Availability::find($id)->whereNull('booked_at')->first())
         {
             //mark availability as booked
@@ -144,7 +159,10 @@ class AvailabilityController extends Controller
             $appointment->comments = $request->input('comments');
             $appointment->save();
 
+            $this->appointmentTrait->sendEmail(Employee::find($Availability->employee_id),$appointment);
         }
+
+
 
         Session::flash('flash_message','Appointment created successfully.');
 

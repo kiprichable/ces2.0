@@ -30,7 +30,7 @@ class HomeController extends Controller
         $employees = DB::table('employees')
                 ->select('first_name','last_name')
                 ->join('working_hours','working_hours.employee_id','=','employees.id')
-                ->where('working_hours.date','>=',date('Y-m-d'))
+                ->where('working_hours.date','>',date('Y-m-d'))
                 ->select('employees.*')
                 ->distinct()
                 ->get()->toArray();

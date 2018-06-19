@@ -45,7 +45,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand lead" href="{{url('/')}}" style="font-style: italic; color: whitesmoke">ST.LOUIS COUNTY CONTINUUM OF CARE MN</a>
+        <a class="navbar-brand lead" href="{{url('/')}}" style="font-style: italic; color: whitesmoke;margin-bottom: -5%">ST.LOUIS COUNTY CONTINUUM OF CARE MN</a>
     </div>
     <!-- /.navbar-header -->
     @inject('request', 'Illuminate\Http\Request')
@@ -206,18 +206,36 @@
 @if( Session::has('flash_message'))
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#myFlashModal').modal();
+            $('#myFlashModalSuccess').modal();
+        });
+    </script>
+@endif
+
+@if( Session::has('flash_error'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#myFlashModalError').modal();
         });
     </script>
 @endif
 
 <!-- Modal -->
-<div class="modal fade" id="myFlashModal" role="dialog">
+<div class="modal fade" id="myFlashModalSuccess" role="dialog">
     <div class="modal-dialog">
             <div class="alert alert-success alert-dismissable">
                 <strong>Success!</strong> {{Session::get('flash_message')}}
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myFlashModalError" role="dialog">
+    <div class="modal-dialog">
+        <div class="alert alert-danger alert-dismissable">
+            <strong>Error!</strong> {{Session::get('flash_error')}}
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
     </div>
 </div>
 <div id="wrapper" style="background-color: #5583b4">

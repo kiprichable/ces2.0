@@ -12,7 +12,8 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Appointments',
+    'name' => 'ST.LOUIS COUNTY CONTINUUM OF CARE MN',
+    'email' => 'Twinportsconsulting@gmail.com',
 
     /*
     |--------------------------------------------------------------------------
