@@ -50,7 +50,7 @@
     </div>
     <!-- /.navbar-header -->
     @inject('request', 'Illuminate\Http\Request')
-    <ul class="nav navbar-top-links navbar-right">
+    <ul class="nav navbar-top-links navbar-right" style="font-style: italic; color: whitesmoke;">
         <li>
             <a href="{{url('/')}}">
                 <i class="fa fa-home"></i>
