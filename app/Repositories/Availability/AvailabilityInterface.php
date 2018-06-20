@@ -59,7 +59,7 @@ class AvailabilityInterface implements AvailabilityInterfaceContract
 
     public function create($requestData)
     {
-        if(emptyArray($requestData))
+        if(empty($requestData))
         {
             Log::debug('No new/future availability for this user');
         }
