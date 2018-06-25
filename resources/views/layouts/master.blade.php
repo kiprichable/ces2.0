@@ -37,20 +37,22 @@
 </head>
 
 <body>
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="background: #010306; color: #f8f9f0">
-    <div class="navbar-header">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="background: #010306; color: #f8f9f0;">
+    <div class="container">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand lead" href="{{url('/')}}"
-           style="font-style: italic; color: whitesmoke;margin-bottom: -5%">ST.LOUIS COUNTY CONTINUUM OF CARE MN</a>
+        <a class="navbar-brand" href="{{url('/')}}"
+           style="font-style: italic; color: whitesmoke;">ST.LOUIS COUNTY CONTINUUM OF CARE MN</a>
     </div>
     <!-- /.navbar-header -->
     @inject('request', 'Illuminate\Http\Request')
-    <ul class="nav navbar-top-links navbar-right" style="font-style: italic; color: whitesmoke;">
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right" style="font-style: italic; color: whitesmoke;">
+            {{--<ul class="nav navbar-top-links navbar-right" style="font-style: italic; color: whitesmoke;">--}}
         <li>
             <a href="{{url('/')}}">
                 <i class="fa fa-home"></i>
@@ -60,7 +62,7 @@
         <li>
             <a href="{{url('/admin/appointments/create')}}">
                 <i class="fa fa-tasks"></i>
-                Pre Screen/Make Appointment
+                Pre-Screen/Appointment
             </a>
         </li>
         <li>
@@ -165,6 +167,7 @@
         </li>
         <!-- /.dropdown -->
     </ul>
+    </div>
     <!-- /.navbar-top-links -->
 
 </nav>
@@ -203,7 +206,9 @@
         </div>
     </div>
 </div>
-<div id="wrapper" style="background-color: #5583b4">
+
+<div class="container">
+<div>
     @if ($errors->count() > 0)
         <div class="note note-danger">
             <ul class="list-unstyled">
@@ -213,10 +218,11 @@
             </ul>
         </div>
     @endif
-    <div id="page-wrapper">
+    <div class="container" style="margin: 5%">
         @yield('content')
     </div>
 
+</div>
 </div>
 
 <script>
