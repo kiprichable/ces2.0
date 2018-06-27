@@ -38,20 +38,20 @@
 
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="background: #010306; color: #f8f9f0;">
-    <div class="container">
+    <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{url('/')}}"
+        <a class="lead navbar-brand" href="{{url('/')}}"
            style="font-style: italic; color: whitesmoke;">ST.LOUIS COUNTY CONTINUUM OF CARE MN</a>
     </div>
     <!-- /.navbar-header -->
     @inject('request', 'Illuminate\Http\Request')
     <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right" style="font-style: italic; color: whitesmoke;">
+        <ul class="nav navbar-right navbar-top-links" style="font-style: italic; color: whitesmoke;">
             {{--<ul class="nav navbar-top-links navbar-right" style="font-style: italic; color: whitesmoke;">--}}
         <li>
             <a href="{{url('/')}}">
@@ -136,6 +136,24 @@
                             </div>
                         </a>
                     </li>
+
+                        <li>
+                            <a href="{{url('admin/appointments')}}">
+                                <div>
+                                    <i class="fa fa-calendar-check-o fa-fw"></i> Appointments
+                                    <span class="pull-right text-muted small">Upcoming</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{url('admin/working_hours')}}">
+                                <div>
+                                    <i class="fa fa-clock-o fa-fw"></i> Working Hours
+                                    <span class="pull-right text-muted small">Case Managers Only</span>
+                                </div>
+                            </a>
+                        </li>
 
                     <li>
                         @if(Auth::user())
