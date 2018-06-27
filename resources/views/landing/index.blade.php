@@ -56,7 +56,7 @@
     }
 
 </style>
-<div class="page-wrapper">
+<div id="page-wrapper" style="margin-top: 5%">
     <div class="col-lg-12" style="background-color: #4db3a2">
         <h1 class="page-header lead">Home</h1>
     </div>
